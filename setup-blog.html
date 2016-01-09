@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Odoo Demystification - publishing</title>
+        <title>Seting Up this blog with Pelican</title>
         <link rel="stylesheet" href="http://pouyamn.github.io/theme/css/main.css" />
         <link href="http://pouyamn.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Odoo Demystification Atom Feed" />
 
@@ -15,13 +15,18 @@
         <header id="banner" class="body">
                 <h1><a href="http://pouyamn.github.io/">Odoo Demystification </a></h1>
                 <nav><ul>
-                    <li><a href="http://pouyamn.github.io/category/pelican.html">Pelican</a></li>
+                    <li class="active"><a href="http://pouyamn.github.io/category/pelican.html">Pelican</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://pouyamn.github.io/setup-blog.html" rel="bookmark"
+           title="Permalink to Seting Up this blog with Pelican">Seting Up this blog with Pelican</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://pouyamn.github.io/setup-blog.html">Seting Up this blog with Pelican</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2015-12-24T11:26:00">
                 Thu 24 December 2015
@@ -32,7 +37,7 @@
         </address>
 <p>In <a href="http://pouyamn.github.io/category/pelican.html">Pelican</a>. </p>
 <p>tags: <a href="http://pouyamn.github.io/tag/pelican.html">pelican</a><a href="http://pouyamn.github.io/tag/publishing.html">publishing</a></p>
-</footer><!-- /.post-info --><p>Hi every body, at first it looked like this is a very easy process to setup this blog, but it wasn't that easy. 
+</footer><!-- /.post-info -->      <p>Hi every body, at first it looked like this is a very easy process to setup this blog, but it wasn't that easy. 
 Gitpages suggested Jekil for blog handling , but I wanted something pythonic, so I decided to use pelican. I made a first blog using the guide in github <a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/">here</a>. It was nice but i had a few problems, I'm using SVN normally, so I'm not very familiar with git, this was my source of problems, I guess.
 The problem was about repositories, the method mentioned in that page was cool, in compare to the other and more official methods, but you have to use a submodule which was new to me. </p>
 <p>Ok let's cut the crap, I did this:</p>
@@ -92,10 +97,11 @@ git push -u origin master
 
 <p>Demystification:
 make the html files, setup the links and prepare it, send the compiled result to github and finally send the source files to github too keep them safe :).
-that's it.</p>                </article>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
+that's it.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
