@@ -15,13 +15,92 @@
         <header id="banner" class="body">
                 <h1><a href="http://pouyamn.github.io/">Odoo Demystification </a></h1>
                 <nav><ul>
+                    <li><a href="http://pouyamn.github.io/category/odoo.html">odoo</a></li>
                     <li><a href="http://pouyamn.github.io/category/pelican.html">Pelican</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://pouyamn.github.io/setup-blog.html">Seting Up this blog with Pelican</a></h1>
+                    <h1 class="entry-title"><a href="http://pouyamn.github.io/keep-odoo-running.html">Keep Odoo running, easily</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-01-12T11:26:00">
+                Tue 12 January 2016
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://pouyamn.github.io/author/pouya-mn.html">Pouya MN</a>
+        </address>
+<p>In <a href="http://pouyamn.github.io/category/odoo.html">odoo</a>. </p>
+<p>tags: <a href="http://pouyamn.github.io/tag/odoo.html">odoo</a><a href="http://pouyamn.github.io/tag/openerp.html">openerp</a><a href="http://pouyamn.github.io/tag/general.html">general</a></p>
+</footer><!-- /.post-info --><p>A few months ago we had this problem with odoo, the server was sometimes jumping out; quiting with no error, sometimes some momory error. All we had to do was running it agian. It was happening about every 12-48 hours normally but some times every 2-3 hours. It was a pain in the butt, so I made an easy solution that is still working. It means no user complains anymore ;).</p>
+<p>A bit of history, I was using ssh to connect to the server and run it with this command:</p>
+<div class="highlight"><pre>nohup ./openerp-server &amp;
+</pre></div>
+
+
+<p>please note that I ran ./openerep-server directly, whenever I close ssh connection the server would quit. </p>
+<p>The solution was a shell script. At first, I tried to check if odoo is running and if not run it. I started with this command:</p>
+<div class="highlight"><pre><span class="c">#NOT WORKING</span>
+ps aux | grep openerp <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;not running&quot;</span>
+</pre></div>
+
+
+<p>Demystification:</p>
+<p><strong>ps aux</strong> <em>list process and send output to screen</em>
+<strong>grep openerp</strong> <em>filter process with openerp in them.</em>
+<strong>|| echo "not running"</strong> <em>if the result(exit code) of grep is false, print 'not found'</em> </p>
+<p>Easy,but wait my own command is always fetch by grep! the result is </p>
+<div class="highlight"><pre><span class="n">my_user</span>       <span class="mi">4220</span> <span class="mf">16.4</span>  <span class="mf">4.9</span> <span class="mi">1080324</span> <span class="mi">400516</span> <span class="n">pts</span><span class="o">/</span><span class="mi">0</span>  <span class="n">Sl</span>   <span class="mo">07</span><span class="o">:</span><span class="mi">54</span>  <span class="mi">21</span><span class="o">:</span><span class="mi">15</span> <span class="n">python</span> <span class="p">.</span><span class="o">/</span><span class="n">openerp</span><span class="o">-</span><span class="n">server</span>
+<span class="n">my_user</span>      <span class="mi">32186</span>  <span class="mf">0.0</span>  <span class="mf">0.0</span>   <span class="mi">7836</span>   <span class="mi">884</span> <span class="n">pts</span><span class="o">/</span><span class="mi">1</span>    <span class="n">S</span><span class="o">+</span>   <span class="mi">10</span><span class="o">:</span><span class="mo">04</span>   <span class="mi">0</span><span class="o">:</span><span class="mo">00</span> <span class="n">grep</span> <span class="n">openerp</span>
+</pre></div>
+
+
+<p>So the exit code of grep is always greater than 0 or logically speeking, it is <em>True</em>. I cannot understad wether odoo is running. I had to filter out 'grep' line, or keep odoo lines only: </p>
+<div class="highlight"><pre>ps aux | grep openerp |grep python <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;not running&quot;</span>
+</pre></div>
+
+
+<p>Demysitification:
+<em>firstly, filter lines with openerp in them then filter the results again by:</em>
+<strong>grep python</strong> <em>yes, nasty 'grep' line has no python in it! ;)</em></p>
+<p>now it works fine. 
+For the next step I wrote a bash script starting like:</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="o">[</span>ps aux | grep openerp | grep python<span class="o">]</span> 
+...
+</pre></div>
+
+
+<p>But then it downed on me that the solution is much easier, the final script is:</p>
+<div class="highlight"><pre>run-odoo.sh:
+
+<span class="nb">cd</span> ~/odoo <span class="c">#replace it with your odoo folder</span>
+<span class="k">while</span> <span class="o">[</span> : <span class="o">]</span>
+<span class="k">do</span>
+./openerp-server
+sleep 3
+<span class="k">done</span>
+</pre></div>
+
+
+<p>just run it the same as before:
+```bash
+nohup ./run-odoo.sh &amp;
+````
+clean and easy! </p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://pouyamn.github.io/setup-blog.html" rel="bookmark"
+                           title="Permalink to Seting Up this blog with Pelican">Seting Up this blog with Pelican</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2015-12-24T11:26:00">
                 Thu 24 December 2015
@@ -32,68 +111,10 @@
         </address>
 <p>In <a href="http://pouyamn.github.io/category/pelican.html">Pelican</a>. </p>
 <p>tags: <a href="http://pouyamn.github.io/tag/pelican.html">pelican</a><a href="http://pouyamn.github.io/tag/publishing.html">publishing</a></p>
-</footer><!-- /.post-info --><p>Hi every body, at first it looked like this is a very easy process to setup this blog, but it wasn't that easy. 
-Gitpages suggested Jekil for blog handling , but I wanted something pythonic, so I decided to use pelican. I made a first blog using the guide in github <a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/">here</a>. It was nice but i had a few problems, I'm using SVN normally, so I'm not very familiar with git, this was my source of problems, I guess.
-The problem was about repositories, the method mentioned in that page was cool, in compare to the other and more official methods, but you have to use a submodule which was new to me. </p>
-<p>Ok let's cut the crap, I did this:</p>
-<p>First I made a repository by the <a href="https://pages.github.com/">official documentions</a> (I didn't install jekil). Then I created two new repositories, myusername.github.io-src and myusername.github.io, as explained on <a href="https://github.com/new">Github pages</a>.</p>
-<p>Then I cloned the source (...-src) to a folder named <em>ghpages</em> by:</p>
-<div class="highlight"><pre>git clone https://github.com/myusername/myusername.github.io-src.git ghpages
-</pre></div>
-
-
-<p>and made git remember my creditentials:</p>
-<div class="highlight"><pre>git config credential.helper store
-</pre></div>
-
-
-<p>I made a submodel repository by entering this in my main folder (ghpages):</p>
-<div class="highlight"><pre>git submodule add https://github.com/pouyamn/pouyamn.github.io.git output
-</pre></div>
-
-
-<p>so it made a folder named <em>output</em>. Now it was the time for installing pelican and running it:</p>
-<div class="highlight"><pre>sudo apt-get install python-pelican
-<span class="nb">cd</span> /ghpages
-pelican-quickstart 
-</pre></div>
-
-
-<p>we have to stop pelican from erasing the output directory everytime, I edited <em>publishconf.py</em>: </p>
-<div class="highlight"><pre><span class="n">DELETE_OUTPUT_DIRECTORY</span> <span class="o">=</span> <span class="bp">False</span>
-</pre></div>
-
-
-<p>well it is almost there, make the first post in contents folder. I used MarkDown, although other languages are also possible. For this I installed haroopad</p>
-<div class="highlight"><pre>sudo apt-get install haroopad
-</pre></div>
-
-
-<p>I made a file in <em>content</em> folder named for example, <em>first.md</em>. and I made this post in it.
-Ok, let's take a look:</p>
-<div class="highlight"><pre>make html <span class="o">&amp;&amp;</span> make serve
-</pre></div>
-
-
-<p>you can now open <em>localhost:8000</em> and enjoy your first post in your pc (links willnot work, they are directed to the <em>real</em> blog). </p>
-<p>Publish time!</p>
-<div class="highlight"><pre>make publish
-<span class="nb">cd </span>output/
-git add .
-git commit -m <span class="s2">&quot;First Post.&quot;</span>
-git push -u origin master
-<span class="nb">cd</span> ..
-<span class="nb">echo</span> <span class="s1">&#39;*.pyc&#39;</span> &gt;&gt; .gitignore <span class="c">#don&#39;t need pyc file</span>
-git add .
-git commit -m <span class="s2">&quot;First commit.&quot;</span>
-git push -u origin master
-</pre></div>
-
-
-<p>Demystification:
-make the html files, setup the links and prepare it, send the compiled result to github and finally send the source files to github too keep them safe :).
-that's it.</p>                </article>
-            </aside><!-- /#featured -->
+</footer><!-- /.post-info -->                <p>How did i setup this blog</p>
+                <a class="readmore" href="http://pouyamn.github.io/setup-blog.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">

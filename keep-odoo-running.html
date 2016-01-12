@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Odoo Demystification - Pouya MN</title>
+        <title>Keep Odoo running, easily</title>
         <link rel="stylesheet" href="http://pouyamn.github.io/theme/css/main.css" />
         <link href="http://pouyamn.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Odoo Demystification Atom Feed" />
 
@@ -15,14 +15,19 @@
         <header id="banner" class="body">
                 <h1><a href="http://pouyamn.github.io/">Odoo Demystification </a></h1>
                 <nav><ul>
-                    <li><a href="http://pouyamn.github.io/category/odoo.html">odoo</a></li>
+                    <li class="active"><a href="http://pouyamn.github.io/category/odoo.html">odoo</a></li>
                     <li><a href="http://pouyamn.github.io/category/pelican.html">Pelican</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://pouyamn.github.io/keep-odoo-running.html" rel="bookmark"
+           title="Permalink to Keep Odoo running, easily">Keep Odoo running, easily</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://pouyamn.github.io/keep-odoo-running.html">Keep Odoo running, easily</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-01-12T11:26:00">
                 Tue 12 January 2016
@@ -33,7 +38,7 @@
         </address>
 <p>In <a href="http://pouyamn.github.io/category/odoo.html">odoo</a>. </p>
 <p>tags: <a href="http://pouyamn.github.io/tag/odoo.html">odoo</a><a href="http://pouyamn.github.io/tag/openerp.html">openerp</a><a href="http://pouyamn.github.io/tag/general.html">general</a></p>
-</footer><!-- /.post-info --><p>A few months ago we had this problem with odoo, the server was sometimes jumping out; quiting with no error, sometimes some momory error. All we had to do was running it agian. It was happening about every 12-48 hours normally but some times every 2-3 hours. It was a pain in the butt, so I made an easy solution that is still working. It means no user complains anymore ;).</p>
+</footer><!-- /.post-info -->      <p>A few months ago we had this problem with odoo, the server was sometimes jumping out; quiting with no error, sometimes some momory error. All we had to do was running it agian. It was happening about every 12-48 hours normally but some times every 2-3 hours. It was a pain in the butt, so I made an easy solution that is still working. It means no user complains anymore ;).</p>
 <p>A bit of history, I was using ssh to connect to the server and run it with this command:</p>
 <div class="highlight"><pre>nohup ./openerp-server &amp;
 </pre></div>
@@ -87,36 +92,11 @@ sleep 3
 ```bash
 nohup ./run-odoo.sh &amp;
 ````
-clean and easy! </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+clean and easy! </p>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://pouyamn.github.io/setup-blog.html" rel="bookmark"
-                           title="Permalink to Seting Up this blog with Pelican">Seting Up this blog with Pelican</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-12-24T11:26:00">
-                Thu 24 December 2015
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://pouyamn.github.io/author/pouya-mn.html">Pouya MN</a>
-        </address>
-<p>In <a href="http://pouyamn.github.io/category/pelican.html">Pelican</a>. </p>
-<p>tags: <a href="http://pouyamn.github.io/tag/pelican.html">pelican</a><a href="http://pouyamn.github.io/tag/publishing.html">publishing</a></p>
-</footer><!-- /.post-info -->                <p>How did i setup this blog</p>
-                <a class="readmore" href="http://pouyamn.github.io/setup-blog.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
