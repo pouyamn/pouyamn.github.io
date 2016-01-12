@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Odoo Demystification</title>
-        <link rel="stylesheet" href="http://pouyamn.github.io/theme/css/main.css" />
-        <link href="http://pouyamn.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Odoo Demystification Atom Feed" />
-
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+		<title>Odoo Demystification</title>
+		<meta charset="utf-8" />
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="stylesheet" type="text/css" href="http://pouyamn.github.io/theme/css/style.css" />
+		<link rel='stylesheet' id='oswald-css'  href='http://fonts.googleapis.com/css?family=Oswald&#038;ver=3.3.2' type='text/css' media='all' />
+		<style type="text/css">
+			body.custom-background { background-color: #f5f5f5; }
+		</style>
+		<link rel="alternate" type="application/atom+xml"
+			title="Odoo Demystification — Flux Atom"
+			href="http://pouyamn.github.io/" /> 
+		<!--[if lte IE 8]><script src="http://pouyamn.github.io/theme/js/html5shiv.js"></script><![endif]-->
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://pouyamn.github.io/">Odoo Demystification </a></h1>
-                <nav><ul>
-                    <li><a href="http://pouyamn.github.io/category/odoo.html">odoo</a></li>
-                    <li><a href="http://pouyamn.github.io/category/pelican.html">Pelican</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<body class="home blog custom-background " >
+	<div id="container">
+		<div id="header">
+				<h1 id="site-title"><a href="http://pouyamn.github.io">Odoo Demystification</a></h1>
+		</div><!-- /#banner -->
+		
+		<div id="menu">
+			<div class="menu-navigation-container">
+				<ul id="menu-navigation" class="menu">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://pouyamn.github.io/category/odoo.html">odoo</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://pouyamn.github.io/category/pelican.html">Pelican</a></li>
+						<li  class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://odoo.com/">Odoo</a></li>
+						<li  class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://fshahy.github.io/">Odoo made Einfach</a></li>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://pouyamn.github.io/keep-odoo-running.html">Keep Odoo running, easily</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2016-01-12T11:26:00">
-                Tue 12 January 2016
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://pouyamn.github.io/author/pouya-mn.html">Pouya MN</a>
-        </address>
-<p>In <a href="http://pouyamn.github.io/category/odoo.html">odoo</a>. </p>
-<p>tags: <a href="http://pouyamn.github.io/tag/odoo.html">odoo</a><a href="http://pouyamn.github.io/tag/openerp.html">openerp</a><a href="http://pouyamn.github.io/tag/general.html">general</a></p>
-</footer><!-- /.post-info --><p>A few months ago we had this problem with odoo, the server was sometimes jumping out; quiting with no error, sometimes some momory error. All we had to do was running it agian. It was happening about every 12-48 hours normally but some times every 2-3 hours. It was a pain in the butt, so I made an easy solution that is still working. It means no user complains anymore ;).</p>
+				</ul>
+			</div> <!--/#menu-navigation-container-->
+		</div><!-- /#menu -->
+		
+		<div class="page-title">
+		</div>
+	
+		<div id="contents">
+<div class="post type-post status-publish format-standard hentry category-general" id="post">
+	<div class="entry-meta">
+		<div class="date"><a href="http://pouyamn.github.io/posts/2016/01/12/keep-odoo-running/">Tue 12 January 2016</a></div>
+		<span class="byline">By <a href="http://pouyamn.github.io/author/pouya-mn.html">Pouya MN</a></span>
+			<span class="cat-links"><a href="http://pouyamn.github.io/category/odoo.html" title="View all posts in odoo" rel="category tag">odoo</a></span>
+	</div> <!-- /#entry-meta -->
+	<div class="main">
+		<h2 class="entry-title">
+			<a href="http://pouyamn.github.io/posts/2016/01/12/keep-odoo-running/" title="Permalink to Keep Odoo running, easily" rel="bookmark">Keep Odoo running, easily</a>
+		</h2>
+		<div class="entry-content">
+			<p>A few months ago we had this problem with odoo, the server was sometimes jumping out; quiting with no error, sometimes some momory error. All we had to do was running it agian. It was happening about every 12-48 hours normally but some times every 2-3 hours. It was a pain in the butt, so I made an easy solution that is still working. It means no user complains anymore ;).</p>
 <p>A bit of history, I was using ssh to connect to the server and run it with this command:</p>
 <div class="highlight"><pre>nohup ./openerp-server &amp;
 </pre></div>
@@ -87,62 +102,93 @@ sleep 3
 ```bash
 nohup ./run-odoo.sh &amp;
 ````
-clean and easy! </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+clean and easy! </p>
+		</div> <!--/#entry-content-->
+    		<span class="tag-links"><strong>Tagged</strong>
+ <a href="http://pouyamn.github.io/tag/general.html" rel="tag">general</a>,  <a href="http://pouyamn.github.io/tag/odoo.html" rel="tag">odoo</a>,  <a href="http://pouyamn.github.io/tag/openerp.html" rel="tag">openerp</a>    		</span>
+	</div> <!--/#main-->
+</div>  <!--/#post--><div class="post type-post status-publish format-standard hentry category-general" id="post">
+	<div class="entry-meta">
+		<div class="date"><a href="http://pouyamn.github.io/posts/2015/12/24/setup-blog/">Thu 24 December 2015</a></div>
+		<span class="byline">By <a href="http://pouyamn.github.io/author/pouya-mn.html">Pouya MN</a></span>
+			<span class="cat-links"><a href="http://pouyamn.github.io/category/pelican.html" title="View all posts in Pelican" rel="category tag">Pelican</a></span>
+	</div> <!-- /#entry-meta -->
+	<div class="main">
+		<h2 class="entry-title">
+			<a href="http://pouyamn.github.io/posts/2015/12/24/setup-blog/" title="Permalink to Seting Up this blog with Pelican" rel="bookmark">Seting Up this blog with Pelican</a>
+		</h2>
+		<div class="entry-content">
+			<p>Hi every body, at first it looked like this is a very easy process to setup this blog, but it wasn't that easy. 
+Gitpages suggested Jekil for blog handling , but I wanted something pythonic, so I decided to use pelican. I made a first blog using the guide in github <a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/">here</a>. It was nice but i had a few problems, I'm using SVN normally, so I'm not very familiar with git, this was my source of problems, I guess.
+The problem was about repositories, the method mentioned in that page was cool, in compare to the other and more official methods, but you have to use a submodule which was new to me. </p>
+<p>Ok let's cut the crap, I did this:</p>
+<p>First I made a repository by the <a href="https://pages.github.com/">official documentions</a> (I didn't install jekil). Then I created two new repositories, myusername.github.io-src and myusername.github.io, as explained on <a href="https://github.com/new">Github pages</a>.</p>
+<p>Then I cloned the source (...-src) to a folder named <em>ghpages</em> by:</p>
+<div class="highlight"><pre>git clone https://github.com/myusername/myusername.github.io-src.git ghpages
+</pre></div>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://pouyamn.github.io/setup-blog.html" rel="bookmark"
-                           title="Permalink to Seting Up this blog with Pelican">Seting Up this blog with Pelican</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-12-24T11:26:00">
-                Thu 24 December 2015
-        </abbr>
+<p>and made git remember my creditentials:</p>
+<div class="highlight"><pre>git config credential.helper store
+</pre></div>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://pouyamn.github.io/author/pouya-mn.html">Pouya MN</a>
-        </address>
-<p>In <a href="http://pouyamn.github.io/category/pelican.html">Pelican</a>. </p>
-<p>tags: <a href="http://pouyamn.github.io/tag/pelican.html">pelican</a><a href="http://pouyamn.github.io/tag/publishing.html">publishing</a></p>
-</footer><!-- /.post-info -->                <p>How did i setup this blog</p>
-                <a class="readmore" href="http://pouyamn.github.io/setup-blog.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://odoo.com/">Odoo</a></li>
-                            <li><a href="http://fshahy.github.io/">Odoo made Einfach</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://pouyamn.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="https://github.com/pouyamn/">My github page</a></li>
-                            <li><a href="https://tr.linkedin.com/in/pouyamn">My linked-in profile</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+<p>I made a submodel repository by entering this in my main folder (ghpages):</p>
+<div class="highlight"><pre>git submodule add https://github.com/pouyamn/pouyamn.github.io.git output
+</pre></div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+<p>so it made a folder named <em>output</em>. Now it was the time for installing pelican and running it:</p>
+<div class="highlight"><pre>sudo apt-get install python-pelican
+<span class="nb">cd</span> /ghpages
+pelican-quickstart 
+</pre></div>
 
+
+<p>we have to stop pelican from erasing the output directory everytime, I edited <em>publishconf.py</em>: </p>
+<div class="highlight"><pre><span class="n">DELETE_OUTPUT_DIRECTORY</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
+
+
+<p>well it is almost there, make the first post in contents folder. I used MarkDown, although other languages are also possible. For this I installed haroopad</p>
+<div class="highlight"><pre>sudo apt-get install haroopad
+</pre></div>
+
+
+<p>I made a file in <em>content</em> folder named for example, <em>first.md</em>. and I made this post in it.
+Ok, let's take a look:</p>
+<div class="highlight"><pre>make html <span class="o">&amp;&amp;</span> make serve
+</pre></div>
+
+
+<p>you can now open <em>localhost:8000</em> and enjoy your first post in your pc (links willnot work, they are directed to the <em>real</em> blog). </p>
+<p>Publish time!</p>
+<div class="highlight"><pre>make publish
+<span class="nb">cd </span>output/
+git add .
+git commit -m <span class="s2">&quot;First Post.&quot;</span>
+git push -u origin master
+<span class="nb">cd</span> ..
+<span class="nb">echo</span> <span class="s1">&#39;*.pyc&#39;</span> &gt;&gt; .gitignore <span class="c">#don&#39;t need pyc file</span>
+git add .
+git commit -m <span class="s2">&quot;First commit.&quot;</span>
+git push -u origin master
+</pre></div>
+
+
+<p>Demystification:
+make the html files, setup the links and prepare it, send the compiled result to github and finally send the source files to github too keep them safe :).
+that's it.</p>
+		</div> <!--/#entry-content-->
+    		<span class="tag-links"><strong>Tagged</strong>
+ <a href="http://pouyamn.github.io/tag/pelican.html" rel="tag">pelican</a>,  <a href="http://pouyamn.github.io/tag/publishing.html" rel="tag">publishing</a>    		</span>
+	</div> <!--/#main-->
+</div>  <!--/#post-->		</div>
+		
+		<div id="footer">
+			<p>Powered by <a href="http://getpelican.com">Pelican</a>, theme by <a href="http://bunnyman.info">tBunnyMan</a>.</p>
+		</div><!-- /#footer -->
+	</div><!-- /#container -->
+	<div style="display:none"></div>
 </body>
 </html>
