@@ -49,8 +49,9 @@ sleep 3
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;just run it the same as before:
-```bash
-nohup ./run-odoo.sh &amp;amp;
-````
-clean and easy! &lt;/p&gt;</summary><category term="odoo"></category><category term="openerp"></category><category term="general"></category></entry></feed>
+&lt;p&gt;just run it the same as before:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;nohup ./run-odoo.sh &amp;amp;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;clean and easy! &lt;/p&gt;</summary><category term="odoo"></category><category term="openerp"></category><category term="general"></category></entry></feed>

@@ -49,11 +49,12 @@ sleep 3
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;just run it the same as before:
-```bash
-nohup ./run-odoo.sh &amp;amp;
-````
-clean and easy! &lt;/p&gt;</summary><category term="odoo"></category><category term="openerp"></category><category term="general"></category></entry><entry><title>Seting Up this blog with Pelican</title><link href="http://pouyamn.github.io/posts/2015/12/24/setup-blog/" rel="alternate"></link><updated>2015-12-24T11:26:00+01:00</updated><author><name>Pouya MN</name></author><id>tag:pouyamn.github.io,2015-12-24:posts/2015/12/24/setup-blog/</id><summary type="html">&lt;p&gt;Hi every body, at first it looked like this is a very easy process to setup this blog, but it wasn't that easy. 
+&lt;p&gt;just run it the same as before:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;nohup ./run-odoo.sh &amp;amp;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;clean and easy! &lt;/p&gt;</summary><category term="odoo"></category><category term="openerp"></category><category term="general"></category></entry><entry><title>Seting Up this blog with Pelican</title><link href="http://pouyamn.github.io/posts/2015/12/24/setup-blog/" rel="alternate"></link><updated>2015-12-24T11:26:00+01:00</updated><author><name>Pouya MN</name></author><id>tag:pouyamn.github.io,2015-12-24:posts/2015/12/24/setup-blog/</id><summary type="html">&lt;p&gt;Hi every body, at first it looked like this is a very easy process to setup this blog, but it wasn't that easy. 
 Gitpages suggested Jekil for blog handling , but I wanted something pythonic, so I decided to use pelican. I made a first blog using the guide in github &lt;a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/"&gt;here&lt;/a&gt;. It was nice but i had a few problems, I'm using SVN normally, so I'm not very familiar with git, this was my source of problems, I guess.
 The problem was about repositories, the method mentioned in that page was cool, in compare to the other and more official methods, but you have to use a submodule which was new to me. &lt;/p&gt;
 &lt;p&gt;Ok let's cut the crap, I did this:&lt;/p&gt;
@@ -114,24 +115,34 @@ git push -u origin master
 &lt;p&gt;Demystification:
 make the html files, setup the links and prepare it, send the compiled result to github and finally send the source files to github too keep them safe :).
 that's it.&lt;/p&gt;
-&lt;p&gt;++edit++
-Some caretaker's tasks:
-- Make publishing more automatic and comfortable:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;edit&lt;/strong&gt;
+Some caretaker's tasks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make publishing more automatic and comfortable:&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#file: makefile&lt;/span&gt;
 ...
 github: publish
-    &lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OUTPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;
-    git add .
-    git commit -m &lt;span class="s2"&gt;&amp;quot;Auto Post!&amp;quot;&lt;/span&gt;  
-    git push origin master
-    &lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;BASEDIR&lt;span class="k"&gt;)&lt;/span&gt;
-    git add .
-    git commit -m &lt;span class="s2"&gt;&amp;quot;Auto Commit!&amp;quot;&lt;/span&gt;    
-    git push origin master
+        &lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OUTPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;
+        git add -A .
+        git commit -m &lt;span class="s2"&gt;&amp;quot;Auto Post!&amp;quot;&lt;/span&gt;  
+        git push origin master
+        &lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;BASEDIR&lt;span class="k"&gt;)&lt;/span&gt;
+        git add -A .
+        git commit -m &lt;span class="s2"&gt;&amp;quot;Auto Commit!&amp;quot;&lt;/span&gt;    
+        git push origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;So I can use &lt;code&gt;make github&lt;/code&gt; for publishing and posting to my account.
-- take care of &lt;code&gt;pelicanconf.py&lt;/code&gt; and &lt;code&gt;publishconf.py&lt;/code&gt;, the former is for local serving and testing and the latter is for publishing, as the name suggests!
- - put disqus, google analytics etc in publish profile only, put the others in &lt;strong&gt;both&lt;/strong&gt; .
- - use relative paths in &lt;code&gt;pelicanconf.py&lt;/code&gt;, don't use them in &lt;code&gt;publishconf.py&lt;/code&gt;.&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
+&lt;p&gt;So I can use &lt;code&gt;make github&lt;/code&gt; for publishing and posting to my account.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;take care of &lt;code&gt;pelicanconf.py&lt;/code&gt; and &lt;code&gt;publishconf.py&lt;/code&gt;, the former is for local serving and testing and the latter is for publishing, as the name suggests!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;put disqus, google analytics etc in publish profile only, put the others in &lt;strong&gt;both&lt;/strong&gt; .&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;use relative paths in &lt;code&gt;pelicanconf.py&lt;/code&gt;, don't use them in &lt;code&gt;publishconf.py&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
