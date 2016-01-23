@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Seting Up this blog with Pelican</title>
+        <title>QWEB demystification, Part 1 - t-field and t-esc</title>
         <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="http://pouyamn.github.io/theme/images/favicon.ico"/>
@@ -79,8 +79,8 @@
       <article>
         <header>
           <h1 class="entry-title">
-            <a href="http://pouyamn.github.io/posts/2015/12/24/setup-blog/" rel="bookmark"
-               title="Permalink to Seting Up this blog with Pelican">Seting Up this blog with Pelican</a></h1>
+            <a href="http://pouyamn.github.io/posts/2016/01/16/qweb-1/" rel="bookmark"
+               title="Permalink to QWEB demystification, Part 1 - t-field and t-esc">QWEB demystification, Part 1 - t-field and t-esc</a></h1>
 		<!-- Place this tag where you want the +1 button to render. -->
 		<div class="g-plusone" data-size="tall"></div>
 
@@ -93,104 +93,26 @@
         <li class="vcard author">
                  by&nbsp;<a class="url fn" href="http://pouyamn.github.io/author/pouya-mn.html">Pouya MN</a>
         </li>
-        <li class="published" title="2015-12-24T11:26:00">
-          on&nbsp;Thu 24 December 2015
+        <li class="published" title="2016-01-16T11:26:00">
+          on&nbsp;Sat 16 January 2016
         </li>
 
 	</ul>
-<p>Category: <a href="http://pouyamn.github.io/tag/pelican.html">pelican</a><a href="http://pouyamn.github.io/tag/publishing.html">publishing</a></p>
-</div><!-- /.post-info -->          <p>Hi every body, at first it looked like this is a very easy process to setup this blog, but it wasn't that easy. 
-Gitpages suggested Jekil for blog handling , but I wanted something pythonic, so I decided to use pelican. I made a first blog using the guide in github <a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/">here</a>. It was nice but i had a few problems, I'm using SVN normally, so I'm not very familiar with git, this was my source of problems, I guess.
-The problem was about repositories, the method mentioned in that page was cool, in compare to the other and more official methods, but you have to use a submodule which was new to me. </p>
-<p>Ok let's cut the crap, I did this:</p>
-<p>First I made a repository by the <a href="https://pages.github.com/">official documentions</a> (I didn't install jekil). Then I created two new repositories, myusername.github.io-src and myusername.github.io, as explained on <a href="https://github.com/new">Github pages</a>.</p>
-<p>Then I cloned the source (...-src) to a folder named <em>ghpages</em> by:</p>
-<div class="highlight"><pre>git clone https://github.com/myusername/myusername.github.io-src.git ghpages
+<p>Category: <a href="http://pouyamn.github.io/tag/qweb.html">QWEB</a><a href="http://pouyamn.github.io/tag/safe-eval.html">safe-eval</a><a href="http://pouyamn.github.io/tag/openerp.html">openerp</a><a href="http://pouyamn.github.io/tag/odoo.html">odoo</a><a href="http://pouyamn.github.io/tag/odoo-reports.html">odoo reports</a></p>
+</div><!-- /.post-info -->          <p>When I stated to make some QWEB reports, I was wondering why there are both <code>t-field</code> and <code>t-esc</code>? For example both <code>t-esc="partner_id.name"</code> and <code>t-field="partner_id.name"</code> has the exact same output. </p>
+<p>I made a thorough study and I'll tell you the results, but first... Let me write about QWEB, the great html templating engine. 
+There are some templating language, and some of them are XML-based like Genshi, Thymeleaf or Facelets. But QWEB is exactly designed for Odoo, it has access to the database and python side and context. Other templating engines are more general than QWEB and the can normally access to some kind of context passed in a JSON object only. 
+The beauty of QWEB is that it is python integrated, there are not just variables but also you can have some python expressions and also it has customizable widgets. I'll write about widgets and using expressions to change the html dynamically.
+Appologies me for talking too much, lets get back to the story, <code>t-esc</code> or <code>t-field</code>. The differences are quite a few, in text fields they are just the same but it is not going on like this with the others. The difference is in the interpreter of them and the widgets.<code>t-esc</code> actually calls a <code>safe-eval</code> most of other 't's do the same but <code>t-field</code> can acept only a field name, or a chain of dot seperated related fields. Also, <code>t-field</code> uses form widgets for rendering the selected field while <code>t-esc</code> only returns a simple python output (we can change this and prettify the otherwise blunt <code>t-esc</code>, I'll talk about it in the following parts). For example if you call t-esc on a related field i.e. <code>t-esc="someMany2Onefield"</code> it will print the python <code>__str__</code> of the class and a record number, just like what you will have if you in python:</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">someMany2Onefield</span>
 </pre></div>
 
 
-<p>and made git remember my creditentials:</p>
-<div class="highlight"><pre>git config credential.helper store
-</pre></div>
-
-
-<p>I made a submodel repository by entering this in my main folder (ghpages):</p>
-<div class="highlight"><pre>git submodule add https://github.com/pouyamn/pouyamn.github.io.git output
-</pre></div>
-
-
-<p>so it made a folder named <em>output</em>. Now it was the time for installing pelican and running it:</p>
-<div class="highlight"><pre>sudo apt-get install python-pelican
-<span class="nb">cd</span> /ghpages
-pelican-quickstart 
-</pre></div>
-
-
-<p>we have to stop pelican from erasing the output directory everytime, I edited <em>publishconf.py</em>: </p>
-<div class="highlight"><pre><span class="n">DELETE_OUTPUT_DIRECTORY</span> <span class="o">=</span> <span class="bp">False</span>
-</pre></div>
-
-
-<p>well it is almost there, make the first post in contents folder. I used MarkDown, although other languages are also possible. For this I installed haroopad</p>
-<div class="highlight"><pre>sudo apt-get install haroopad
-</pre></div>
-
-
-<p>I made a file in <em>content</em> folder named for example, <em>first.md</em>. and I made this post in it.
-Ok, let's take a look:</p>
-<div class="highlight"><pre>make html <span class="o">&amp;&amp;</span> make serve
-</pre></div>
-
-
-<p>you can now open <em>localhost:8000</em> and enjoy your first post in your pc (links willnot work, they are directed to the <em>real</em> blog). </p>
-<p>Publish time!</p>
-<div class="highlight"><pre>make publish
-<span class="nb">cd </span>output/
-git add .
-git commit -m <span class="s2">&quot;First Post.&quot;</span>
-git push -u origin master
-<span class="nb">cd</span> ..
-<span class="nb">echo</span> <span class="s1">&#39;*.pyc&#39;</span> &gt;&gt; .gitignore <span class="c">#don&#39;t need pyc file</span>
-git add .
-git commit -m <span class="s2">&quot;First commit.&quot;</span>
-git push -u origin master
-</pre></div>
-
-
-<p>Demystification:
-make the html files, setup the links and prepare it, send the compiled result to github and finally send the source files to github too keep them safe :).
-that's it.</p>
-<p><strong>edit</strong>
-Some caretaker's tasks:</p>
-<ul>
-<li>Make publishing more automatic and comfortable:</li>
-</ul>
-<div class="highlight"><pre><span class="c">#file: makefile</span>
-...
-github: publish
-        <span class="nb">cd</span> <span class="k">$(</span>OUTPUTDIR<span class="k">)</span>
-        git add -A .
-        git commit -m <span class="s2">&quot;Auto Post!&quot;</span>  
-        git push origin master
-        <span class="nb">cd</span> <span class="k">$(</span>BASEDIR<span class="k">)</span>
-        git add -A .
-        git commit -m <span class="s2">&quot;Auto Commit!&quot;</span>    
-        git push origin master
-</pre></div>
-
-
-<p>So I can use <code>make github</code> for publishing and posting to my account.</p>
-<ul>
-<li>
-<p>take care of <code>pelicanconf.py</code> and <code>publishconf.py</code>, the former is for local serving and testing and the latter is for publishing, as the name suggests!</p>
-</li>
-<li>
-<p>put disqus, google analytics etc in publish profile only, put the others in <strong>both</strong> .</p>
-</li>
-<li>
-<p>use relative paths in <code>pelicanconf.py</code>, don't use them in <code>publishconf.py</code>.</p>
-</li>
-</ul>
+<p><code>&gt;&gt;&gt;someMany2Onefield(12,)</code>
+but if you use <code>t-field</code> it will display the <code>display_name</code> field or the <code>name_get</code>. The difference is <code>t-field</code> uses form widget of the field as i said before. The same goes with the numerical fields, <code>t-field</code> will use the <code>digits</code> property of the field for decimal point and it will use thousend separator and other settings from the language settings of Odoo, while <code>t-esc</code> simply print the number without formatting (although one can use python's <code>format</code> function in <code>t-esc</code>).
+Other 't' tags also use safe_eval, <code>t-set</code> in <code>t-value</code> part, <code>t-if</code>,  <code>t-foreach</code>, <code>t-att</code> and <code>t-attf</code>, <code>t-raw</code> and <code>t-log</code>.</p>
+<h4>What can be used in safe_eval</h4>
+<p><code>qweb_context</code> and of course safe python commands! It raises two questions, what are <em>safe</em> python commands and what is in <code>qweb_context</code>?</p>
         </div><!-- /.entry-content -->
 
 <!-- Place this tag after the last +1 button tag. -->
