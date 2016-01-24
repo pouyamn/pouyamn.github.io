@@ -1,118 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+>
 <head>
-        <title>Odoo Demystification - JS</title>
-        <meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="http://pouyamn.github.io/theme/images/favicon.ico"/>
-        <link rel="stylesheet" href="http://pouyamn.github.io/theme/css/main.css" type="text/css" />
-        <link href="http://pouyamn.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Odoo Demystification Atom Feed" />
+    <title>JS - Odoo Demystification</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--[if IE]>
-                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="http://pouyamn.github.io/css/ie.css"/>
-                <script src="http://pouyamn.github.io/js/IE8.js" type="text/javascript"></script><![endif]-->
 
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="http://pouyamn.github.io/css/ie6.css"/><![endif]-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
 
+    <meta name="author" content="Pouya MN" />
+    <meta name="keywords" content="JS" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Odoo Demystification" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Odoo Demystification"/>
+        <meta property="og:url" content="http://pouyamn.github.io"/>
+        <meta property="og:description" content="Odoo Demystification"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://pouyamn.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://pouyamn.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://pouyamn.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://pouyamn.github.io/theme/css/style.css" type="text/css"/>
+
+        <link href="http://pouyamn.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Odoo Demystification ATOM Feed"/>
 
 </head>
+<body>
 
-<body id="index" class="home">
-	
-  <!-- <header id="banner" class="body"> -->
-  <!--               <h1><a href="http://pouyamn.github.io/"><img src="http://www.launchyard.com/images/logo.png" /></a></h1> -->
-  <!--       </header> --> 
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://pouyamn.github.io/" class="navbar-brand">
+Odoo Demystification            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="http://pouyamn.github.io/category/general.html">General</a>
+                        </li>
+                        <li >
+                            <a href="http://pouyamn.github.io/category/non-odoo.html">Non-odoo</a>
+                        </li>
+                        <li >
+                            <a href="http://pouyamn.github.io/category/qweb.html">Qweb</a>
+                        </li>
+                        <li >
+                            <a href="http://pouyamn.github.io/category/views.html">Views</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://pouyamn.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
 
-  <div class="LaunchyardDetail">
-    <!-- <p> -->
-    <!-- <img src="http://pouyamn.github.io/theme/images/blue-pin.png" width="100" height="100" alt="Graph icon"> -->
-    <!-- </p> -->
-    <p><a id="sitesubtitle" href="http://pouyamn.github.io/"></a></p>
-    <p><a id="aboutlink" href="http://pouyamn.github.io/pages/about.html">about</a></p>
-
-    <!-- <ul> -->
-    <!--   <li><a href="http://pouyamn.github.io/pages/about.html">about</a></li> -->
-      <!-- <li><a href="http://pouyamn.github.io/pages/about.html">articles</a></li> -->
-<!--  -->
-<!--         <br/> -->
-<!--         <br/> -->
-<!--      -->        
-<!--       <li><a href="">Would you like to have some 'like's and 'ilike's in your domain and att*?</a></li> -->
-<!--      -->
-<!--  -->
-    <!-- </ul> -->
-
-    <!-- This belongs in the about page -->
-      <!--  -->
-      <!-- <a href="https://github.com/pouyamn/">My github page</a> -->
-      <!-- <br/> -->
-      <!--  -->
-      <!-- <a href="https://tr.linkedin.com/in/pouyamn">My linked-in profile</a> -->
-      <!-- <br/> -->
-      <!--  -->
-
-<!-- <ul>
-	<li><a href="http://pouyamn.github.io/category/odoo.html">odoo</a></li>
-	<li><a href="http://pouyamn.github.io/category/pelican.html">Pelican</a></li>
-	<li><a href="http://pouyamn.github.io/category/views.html">views</a></li>
-</ul>
- -->
-  </div>
-
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://pouyamn.github.io/posts/2016/01/23/view_domain_add_like/">Would you like to have some 'like's and 'ilike's in your domain and att*?</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://pouyamn.github.io/author/pouya-mn.html">Pouya MN</a>
-        </li>
-        <li class="published" title="2016-01-23T21:26:00">
-          on&nbsp;Sat 23 January 2016
-        </li>
-
-	</ul>
-<p>Category: <a href="http://pouyamn.github.io/tag/views.html">views</a><a href="http://pouyamn.github.io/tag/odoo.html">odoo</a><a href="http://pouyamn.github.io/tag/js.html">JS</a><a href="http://pouyamn.github.io/tag/hackish.html">hackish</a></p>
-</div><!-- /.post-info --><p>how to add 'like' and 'ilike' operators to domains in odoo</p>
-                    </article>
+            <article>
+                <h2><a href="http://pouyamn.github.io/posts/2016/01/23/view_domain_add_like/">Would you like to have some 'like's and 'ilike's in your domain and attrs?</a></h2>
+                <div class="summary"><p>how to add 'like' and 'ilike' operators to domains in odoo</p>
+                    <a class="btn btn-default btn-xs" href="http://pouyamn.github.io/posts/2016/01/23/view_domain_add_like/">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        <section id="extras" >
-        
-        </section><!-- /#extras -->
-	
-        <footer id="contentinfo" >
-                <address id="about" class="vcard ">
-                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
-                great advantage of <a href="http://python.org" target="_blank">Python</a>.
-		
-                </address><!-- /#about -->
-		
+            </article>
+            <hr/>
 
-                
-        </footer><!-- /#contentinfo -->
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
 
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://github.com/pouyamn/"><i class="fa fa-my-github-page-square fa-lg"></i> My github page</a></li>
+                <li class="list-group-item"><a href="https://tr.linkedin.com/in/pouyamn"><i class="fa fa-my-linked-in-profile-square fa-lg"></i> My linked-in profile</a></li>
+              </ul>
+            </li>
+
+
+
+            <li class="list-group-item"><a href="http://pouyamn.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="http://pouyamn.github.io/tag/qweb.html">
+                            QWEB
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="http://pouyamn.github.io/tag/odoo.html">
+                            odoo
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="http://pouyamn.github.io/tag/odoo-reports.html">
+                            odoo reports
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="http://pouyamn.github.io/tag/safe-eval.html">
+                            safe-eval
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="http://pouyamn.github.io/tag/openerp.html">
+                            openerp
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://pouyamn.github.io/tag/general.html">
+                            general
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://pouyamn.github.io/tag/pelican.html">
+                            pelican
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://pouyamn.github.io/tag/views.html">
+                            views
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://pouyamn.github.io/tag/qweb-widgits.html">
+                            qweb widgits
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://pouyamn.github.io/tag/js.html">
+                            JS
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://pouyamn.github.io/tag/hackish.html">
+                            hackish
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://pouyamn.github.io/tag/publishing.html">
+                            publishing
+                        </a>
+                    </li>
+                </ul>
+            </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://odoo.com/" target="_blank">
+                Odoo
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://fshahy.github.io/" target="_blank">
+                Odoo made Einfach
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://www.odoo.yenthevg.com/" target="_blank">
+                Odoo made easy
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Pouya MN
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://pouyamn.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://pouyamn.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://pouyamn.github.io/theme/js/respond.min.js"></script>
+
+    <!-- Disqus -->
     <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-72349337-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'https://odoodemystification.disqus.com/'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
     </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-72349337-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
 </body>
 </html>
