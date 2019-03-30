@@ -105,7 +105,7 @@ Odoo Demystification            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2016-01-16T11:26:00"> Sat 16 January 2016</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-01-16T11:26:00+03:30"> Sat 16 January 2016</time>
     </span>
 
 
@@ -128,7 +128,7 @@ Odoo Demystification            </a>
 There are some templating language, and some of them are XML-based like Genshi, Thymeleaf or Facelets. But QWEB is exactly designed for Odoo, it has access to the database and python side and context. Other templating engines are more general than QWEB and the can normally access to some kind of context passed in a JSON object only. 
 The beauty of QWEB is that it is python integrated, there are not just variables but also you can have some python expressions and also it has customizable widgets. I'll write about widgets and using expressions to change the html dynamically.
 Appologies me for talking too much, lets get back to the story, <code>t-esc</code> or <code>t-field</code>. The differences are quite a few, in text fields they are just the same but it is not going on like this with the others. The difference is in the interpreter of them and the widgets.<code>t-esc</code> actually calls a <code>safe-eval</code> most of other 't's do the same but <code>t-field</code> can acept only a field name, or a chain of dot seperated related fields. Also, <code>t-field</code> uses form widgets for rendering the selected field while <code>t-esc</code> only returns a simple python output (we can change this and prettify the otherwise blunt <code>t-esc</code>, I'll talk about it in the following parts). For example if you call t-esc on a related field i.e. <code>t-esc="someMany2Onefield"</code> it will print the python <code>__str__</code> of the class and a record number, just like what you will have if you in python:</p>
-<div class="highlight"><pre><span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">someMany2Onefield</span>
+<div class="highlight"><pre><span></span><span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">someMany2Onefield</span>
 </pre></div>
 
 
@@ -181,7 +181,7 @@ Other 't' tags also use safe_eval, <code>t-set</code> in <code>t-value</code> pa
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
               <ul class="list-group" id="social">
                 <li class="list-group-item"><a href="https://github.com/pouyamn/"><i class="fa fa-my-github-page-square fa-lg"></i> My github page</a></li>
-                <li class="list-group-item"><a href="https://tr.linkedin.com/in/pouyamn"><i class="fa fa-my-linked-in-profile-square fa-lg"></i> My linked-in profile</a></li>
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/pouya-malekinejad/"><i class="fa fa-my-linked-in-profile-square fa-lg"></i> My linked-in profile</a></li>
               </ul>
             </li>
 
@@ -189,66 +189,6 @@ Other 't' tags also use safe_eval, <code>t-set</code> in <code>t-value</code> pa
 
             <li class="list-group-item"><a href="https://pouyamn.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/odoo-reports.html">
-                            odoo reports
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/safe-eval.html">
-                            safe-eval
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/qweb.html">
-                            QWEB
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/odoo.html">
-                            odoo
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/openerp.html">
-                            openerp
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/qweb-widgits.html">
-                            qweb widgits
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/hackish.html">
-                            hackish
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/publishing.html">
-                            publishing
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/general.html">
-                            general
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/views.html">
-                            views
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/pelican.html">
-                            pelican
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/js.html">
-                            JS
-                        </a>
-                    </li>
                 </ul>
             </li>
     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>

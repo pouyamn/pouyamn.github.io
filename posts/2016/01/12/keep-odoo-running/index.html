@@ -103,7 +103,7 @@ Odoo Demystification            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2016-01-12T11:26:00"> Tue 12 January 2016</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-01-12T11:26:00+03:30"> Tue 12 January 2016</time>
     </span>
 
 
@@ -119,14 +119,14 @@ Odoo Demystification            </a>
                 </div>
                 <p>A few months ago we had this problem with odoo, the server was sometimes jumping out; quiting with no error, sometimes some momory error. All we had to do was running it agian. It was happening about every 12-48 hours normally but some times every 2-3 hours. It was a pain in the butt, so I made an easy solution that is still working. It means no user complains anymore ;).</p>
 <p>A bit of history, I was using ssh to connect to the server and run it with this command:</p>
-<div class="highlight"><pre>nohup ./openerp-server &amp;
+<div class="highlight"><pre><span></span>nohup ./openerp-server <span class="p">&amp;</span>
 </pre></div>
 
 
 <p>please note that I ran ./openerep-server directly, whenever I close ssh connection the server would quit. </p>
 <p>The solution was a shell script. At first, I tried to check if odoo is running and if not run it. I started with this command:</p>
-<div class="highlight"><pre><span class="c">#NOT WORKING</span>
-ps aux | grep openerp <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;not running&quot;</span>
+<div class="highlight"><pre><span></span><span class="c1">#NOT WORKING</span>
+ps aux <span class="p">|</span> grep openerp <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;not running&quot;</span>
 </pre></div>
 
 
@@ -135,13 +135,13 @@ ps aux | grep openerp <span class="o">||</span> <span class="nb">echo</span> <sp
 <strong>grep openerp</strong> <em>filter process with openerp in them.</em>
 <strong>|| echo "not running"</strong> <em>if the result(exit code) of grep is false, print 'not found'</em> </p>
 <p>Easy,but wait my own command is always fetch by grep! the result is </p>
-<div class="highlight"><pre><span class="n">my_user</span>       <span class="mi">4220</span> <span class="mf">16.4</span>  <span class="mf">4.9</span> <span class="mi">1080324</span> <span class="mi">400516</span> <span class="n">pts</span><span class="o">/</span><span class="mi">0</span>  <span class="n">Sl</span>   <span class="mo">07</span><span class="o">:</span><span class="mi">54</span>  <span class="mi">21</span><span class="o">:</span><span class="mi">15</span> <span class="n">python</span> <span class="p">.</span><span class="o">/</span><span class="n">openerp</span><span class="o">-</span><span class="n">server</span>
-<span class="n">my_user</span>      <span class="mi">32186</span>  <span class="mf">0.0</span>  <span class="mf">0.0</span>   <span class="mi">7836</span>   <span class="mi">884</span> <span class="n">pts</span><span class="o">/</span><span class="mi">1</span>    <span class="n">S</span><span class="o">+</span>   <span class="mi">10</span><span class="o">:</span><span class="mo">04</span>   <span class="mi">0</span><span class="o">:</span><span class="mo">00</span> <span class="n">grep</span> <span class="n">openerp</span>
+<div class="highlight"><pre><span></span>my_user       4220 16.4  4.9 1080324 400516 pts/0  Sl   07:54  21:15 python ./openerp-server
+my_user      32186  0.0  0.0   7836   884 pts/1    S+   10:04   0:00 grep openerp
 </pre></div>
 
 
 <p>So the exit code of grep is always greater than 0 or logically speeking, it is <em>True</em>. I cannot understad wether odoo is running. I had to filter out 'grep' line, or keep odoo lines only: </p>
-<div class="highlight"><pre>ps aux | grep openerp |grep python <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;not running&quot;</span>
+<div class="highlight"><pre><span></span>ps aux <span class="p">|</span> grep openerp <span class="p">|</span>grep python <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;not running&quot;</span>
 </pre></div>
 
 
@@ -150,25 +150,25 @@ ps aux | grep openerp <span class="o">||</span> <span class="nb">echo</span> <sp
 <strong>grep python</strong> <em>yes, nasty 'grep' line has no python in it! ;)</em></p>
 <p>now it works fine. 
 For the next step I wrote a bash script starting like:</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="o">[</span>ps aux | grep openerp | grep python<span class="o">]</span> 
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">[</span>ps aux <span class="p">|</span> grep openerp <span class="p">|</span> grep python<span class="o">]</span> 
 ...
 </pre></div>
 
 
 <p>But then it downed on me that the solution is much easier, the final script is:</p>
-<div class="highlight"><pre>run-odoo.sh:
+<div class="highlight"><pre><span></span>run-odoo.sh:
 
-<span class="nb">cd</span> ~/odoo <span class="c">#replace it with your odoo folder</span>
+<span class="nb">cd</span> ~/odoo <span class="c1">#replace it with your odoo folder</span>
 <span class="k">while</span> <span class="o">[</span> : <span class="o">]</span>
 <span class="k">do</span>
 ./openerp-server
-sleep 3
+sleep <span class="m">3</span>
 <span class="k">done</span>
 </pre></div>
 
 
 <p>just run it the same as before:</p>
-<div class="highlight"><pre>nohup ./run-odoo.sh &amp;
+<div class="highlight"><pre><span></span>nohup ./run-odoo.sh <span class="p">&amp;</span>
 </pre></div>
 
 
@@ -217,7 +217,7 @@ sleep 3
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
               <ul class="list-group" id="social">
                 <li class="list-group-item"><a href="https://github.com/pouyamn/"><i class="fa fa-my-github-page-square fa-lg"></i> My github page</a></li>
-                <li class="list-group-item"><a href="https://tr.linkedin.com/in/pouyamn"><i class="fa fa-my-linked-in-profile-square fa-lg"></i> My linked-in profile</a></li>
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/pouya-malekinejad/"><i class="fa fa-my-linked-in-profile-square fa-lg"></i> My linked-in profile</a></li>
               </ul>
             </li>
 
@@ -225,66 +225,6 @@ sleep 3
 
             <li class="list-group-item"><a href="https://pouyamn.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/odoo-reports.html">
-                            odoo reports
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/safe-eval.html">
-                            safe-eval
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/qweb.html">
-                            QWEB
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/odoo.html">
-                            odoo
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://pouyamn.github.io/tag/openerp.html">
-                            openerp
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/qweb-widgits.html">
-                            qweb widgits
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/hackish.html">
-                            hackish
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/publishing.html">
-                            publishing
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/general.html">
-                            general
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/views.html">
-                            views
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/pelican.html">
-                            pelican
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://pouyamn.github.io/tag/js.html">
-                            JS
-                        </a>
-                    </li>
                 </ul>
             </li>
     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
